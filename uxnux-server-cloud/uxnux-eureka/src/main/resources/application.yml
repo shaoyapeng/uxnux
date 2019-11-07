@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: @pom.artifactId@
+
+eureka:
+  client:
+    register-with-eureka: false #默认是否将自己注册到EurekaServer上，默认是true，此处自己本身就是EurekaServer，所以设置false
+    fetch-registry: false #表示是否从EurekaServer获取注册信息，默认为true。单节点不需要同步其他的EurekaServer节点的数据
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+  # 遇到坑 defaultZone 配置固定路径 http:127.0.0.1:${server.port}/eureka/ 报错
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: 127.0.0.1
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root
