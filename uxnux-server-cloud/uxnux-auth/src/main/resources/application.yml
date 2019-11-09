@@ -1,0 +1,26 @@
+server:
+  port: 8003
+
+spring:
+  # 环境 假设有 application-dev.yml 则使用 application-dev.yml
+  profiles:
+    active: dev
+  # application 是项目名称  pom.xml 中的artifactId
+  application:
+    name: @pom.artifactId@
+  # 数据源 mysql
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://127.0.0.1:3306/uxnux?useUnicode=true&characterEncoding=utf8&serverTimezone=CST
+    name: root
+    password: root
+    hikari:
+      pool-name: hikariCP-biz
+      auto-commit: false
+      read-only: false
+      maximum-pool-size: 20
+      connection-timeout: 36000
+      idle-timeout: 72000
+      max-lifetime: 1800000
+

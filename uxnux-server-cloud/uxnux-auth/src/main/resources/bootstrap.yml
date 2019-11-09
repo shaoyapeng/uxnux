@@ -1,0 +1,16 @@
+# 配置服务中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  instance:
+    hostname: 127.0.0.1
+    port: 8001
+# 安全
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root
+
