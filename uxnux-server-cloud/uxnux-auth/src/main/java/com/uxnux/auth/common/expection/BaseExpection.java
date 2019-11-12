@@ -1,6 +1,6 @@
 package com.uxnux.auth.common.expection;
 
-import com.uxnux.zuul.common.enums.ErrorCodeEnum;
+import com.uxnux.auth.common.enums.ErrorCodeEnum;
 
 /**
  * @Author: 10785
