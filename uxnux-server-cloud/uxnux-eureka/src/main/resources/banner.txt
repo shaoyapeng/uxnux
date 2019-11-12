@@ -1,13 +1,13 @@
 ${AnsiColor.BRIGHT_RED}BOOT版本：${spring-boot.formatted-version}
-${AnsiColor.BRIGHT_BLUE}                      !                      天地山青   ${AnsiColor.BRIGHT_GREEN}                      !
-${AnsiColor.BRIGHT_BLUE}                     /^\                        ${AnsiColor.BRIGHT_GREEN}道法无常                     /^\
-${AnsiColor.BRIGHT_BLUE}                   /     \                   天地无极   ${AnsiColor.BRIGHT_GREEN}                   /     \
-${AnsiColor.BRIGHT_BLUE}   |            | (       ) |            |      ${AnsiColor.BRIGHT_GREEN}乾坤戒法   |            | (       ) |            |
-${AnsiColor.BRIGHT_BLUE}  /^\  |       /^\ \     / /^\       |  /^\  元阳入体   ${AnsiColor.BRIGHT_GREEN}  /^\  |       /^\ \     / /^\       |  /^\
-${AnsiColor.BRIGHT_BLUE}  |O| /^\     (   )|-----|(   )     /^\ |O|     ${AnsiColor.BRIGHT_GREEN}五毒不侵  |O| /^\     (   )|-----|(   )     /^\ |O|
-${AnsiColor.BRIGHT_BLUE}  |_| |-| |^-^|---||-----||---|^-^| |-| |_|  九阳之体   ${AnsiColor.BRIGHT_GREEN}  |_| |-| |^-^|---||-----||---|^-^| |-| |_|
-${AnsiColor.BRIGHT_BLUE}  |O| |O| |/^\|/^\||  |  ||/^\|/^\| |O| |O|     ${AnsiColor.BRIGHT_GREEN}化缘神功  |O| |O| |/^\|/^\||  |  ||/^\|/^\| |O| |O|
-${AnsiColor.BRIGHT_BLUE}  |-| |-| ||_|||_||| /^\ |||_|||_|| |-| |-|  邪魔退散   ${AnsiColor.BRIGHT_GREEN}  |-| |-| ||_|||_||| /^\ |||_|||_|| |-| |-|
-${AnsiColor.BRIGHT_BLUE}  |O| |O| |/^\|/^\||(   )||/^\|/^\| |O| |O|     ${AnsiColor.BRIGHT_GREEN}永不宕机  |O| |O| |/^\|/^\||(   )||/^\|/^\| |O| |O|
-${AnsiColor.BRIGHT_BLUE}  |-| |-| ||_|||_||||   ||||_|||_|| |-| |-|  永无八哥   ${AnsiColor.BRIGHT_GREEN}  |-| |-| ||_|||_||||   ||||_|||_|| |-| |-|
+${AnsiColor.BRIGHT_BLUE}                      !                      永无bug   ${AnsiColor.BRIGHT_GREEN}                      !
+${AnsiColor.BRIGHT_BLUE}                     /^\                        ${AnsiColor.BRIGHT_GREEN}永无bug                     /^\
+${AnsiColor.BRIGHT_BLUE}                   /     \                   永无bug   ${AnsiColor.BRIGHT_GREEN}                   /     \
+${AnsiColor.BRIGHT_BLUE}   |            | (       ) |            |      ${AnsiColor.BRIGHT_GREEN}永无bug   |            | (       ) |            |
+${AnsiColor.BRIGHT_BLUE}  /^\  |       /^\ \     / /^\       |  /^\  永无bug   ${AnsiColor.BRIGHT_GREEN}  /^\  |       /^\ \     / /^\       |  /^\
+${AnsiColor.BRIGHT_BLUE}  |O| /^\     (   )|-----|(   )     /^\ |O|     ${AnsiColor.BRIGHT_GREEN}永无bug  |O| /^\     (   )|-----|(   )     /^\ |O|
+${AnsiColor.BRIGHT_BLUE}  |_| |-| |^-^|---||-----||---|^-^| |-| |_|  永无bug   ${AnsiColor.BRIGHT_GREEN}  |_| |-| |^-^|---||-----||---|^-^| |-| |_|
+${AnsiColor.BRIGHT_BLUE}  |O| |O| |/^\|/^\||  |  ||/^\|/^\| |O| |O|     ${AnsiColor.BRIGHT_GREEN}永无bug  |O| |O| |/^\|/^\||  |  ||/^\|/^\| |O| |O|
+${AnsiColor.BRIGHT_BLUE}  |-| |-| ||_|||_||| /^\ |||_|||_|| |-| |-|  永无bug   ${AnsiColor.BRIGHT_GREEN}  |-| |-| ||_|||_||| /^\ |||_|||_|| |-| |-|
+${AnsiColor.BRIGHT_BLUE}  |O| |O| |/^\|/^\||(   )||/^\|/^\| |O| |O|     ${AnsiColor.BRIGHT_GREEN}永无bug  |O| |O| |/^\|/^\||(   )||/^\|/^\| |O| |O|
+${AnsiColor.BRIGHT_BLUE}  |-| |-| ||_|||_||||   ||||_|||_|| |-| |-|  永无bug   ${AnsiColor.BRIGHT_GREEN}  |-| |-| ||_|||_||||   ||||_|||_|| |-| |-|
 ${AnsiColor.BRIGHT_YELLOW}
