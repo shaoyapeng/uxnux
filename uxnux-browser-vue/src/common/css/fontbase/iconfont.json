@@ -1,0 +1,261 @@
+{
+  "id": "1486165",
+  "name": "basicfont",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11556567",
+      "name": "localico",
+      "font_class": "localico",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "11556601",
+      "name": "arrow-right",
+      "font_class": "arrow-right",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "11556602",
+      "name": "arrow-lefted",
+      "font_class": "arrow-left",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "11556634",
+      "name": "title-right",
+      "font_class": "title-right",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "11556653",
+      "name": "down-arrow-select",
+      "font_class": "rightarrow",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "11556654",
+      "name": "down-arrow-selected",
+      "font_class": "down-arrow-selected",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
+      "icon_id": "11556656",
+      "name": "downarrow",
+      "font_class": "downarrow",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "11556657",
+      "name": "uparrow",
+      "font_class": "uparrow",
+      "unicode": "e635",
+      "unicode_decimal": 58933
+    },
+    {
+      "icon_id": "11579710",
+      "name": "addico",
+      "font_class": "addico",
+      "unicode": "e65e",
+      "unicode_decimal": 58974
+    },
+    {
+      "icon_id": "11579711",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "11579712",
+      "name": "backico",
+      "font_class": "backico",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "11579713",
+      "name": "down-arrowico",
+      "font_class": "down-arrowico",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "11579714",
+      "name": "delect",
+      "font_class": "delect",
+      "unicode": "e662",
+      "unicode_decimal": 58978
+    },
+    {
+      "icon_id": "11579715",
+      "name": "liulanshu",
+      "font_class": "liulanshu",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "11579716",
+      "name": "peopleico",
+      "font_class": "peopleico",
+      "unicode": "e664",
+      "unicode_decimal": 58980
+    },
+    {
+      "icon_id": "11579717",
+      "name": "saveico",
+      "font_class": "saveico",
+      "unicode": "e665",
+      "unicode_decimal": 58981
+    },
+    {
+      "icon_id": "11579718",
+      "name": "look",
+      "font_class": "look",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    },
+    {
+      "icon_id": "11579720",
+      "name": "time",
+      "font_class": "time",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "11579721",
+      "name": "sousuoico",
+      "font_class": "sousuoico",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "11579727",
+      "name": "tree-selected",
+      "font_class": "tree-selected",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "11579730",
+      "name": "tree-file",
+      "font_class": "tree-file",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "11579731",
+      "name": "treeroot-zk",
+      "font_class": "treeroot-zk",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "11579735",
+      "name": "tree-stjico",
+      "font_class": "tree-stjico",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "11579736",
+      "name": "tree=shouqi",
+      "font_class": "treeshouqi",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "11579740",
+      "name": "up-arrowico",
+      "font_class": "up-arrowico",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "11579741",
+      "name": "upfile",
+      "font_class": "upfile",
+      "unicode": "e672",
+      "unicode_decimal": 58994
+    },
+    {
+      "icon_id": "11579754",
+      "name": "wornico",
+      "font_class": "wornico",
+      "unicode": "e674",
+      "unicode_decimal": 58996
+    },
+    {
+      "icon_id": "11579756",
+      "name": "worn-biaoshi",
+      "font_class": "worn-biaoshi",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "11579758",
+      "name": "calendar",
+      "font_class": "calendar",
+      "unicode": "e677",
+      "unicode_decimal": 58999
+    },
+    {
+      "icon_id": "11579759",
+      "name": "search-xiajiantou",
+      "font_class": "search-xiajiantou",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "11579765",
+      "name": "optionedico",
+      "font_class": "optionedico",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "11579766",
+      "name": "selectkdarrow",
+      "font_class": "selectkdarrow",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "11579767",
+      "name": "selectallico",
+      "font_class": "selectallico",
+      "unicode": "e67d",
+      "unicode_decimal": 59005
+    },
+    {
+      "icon_id": "11579768",
+      "name": "selectedico",
+      "font_class": "selectedico",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "11579769",
+      "name": "searchico",
+      "font_class": "searchico",
+      "unicode": "e67f",
+      "unicode_decimal": 59007
+    },
+    {
+      "icon_id": "11657392",
+      "name": "eemplogo",
+      "font_class": "eemp-logo",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    }
+  ]
+}

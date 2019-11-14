@@ -1,0 +1,103 @@
+body {
+  background: $-ux-background-color-base;
+  /* ----- 头部 ----- */
+  .homeheader {
+    background: $-ux-color-primary;
+    position: absolute;
+    height: 60px;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 0px;
+    box-shadow: $-ux-box-shadow-base;
+    .logo {
+      width: 200px;
+      height: inherit;
+      font-size: 36px;
+      color:$-ux-color-white;
+      font-weight: $-ux-font-weight-blod;
+      cursor: pointer;
+    }
+    .menu {
+      width: calc(100% - 500px);
+      height: inherit;
+    }
+    .self {
+      width: 300px;
+      height: inherit;
+    }
+  }
+  .leftnav {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    bottom: 0;
+    background: $-ux-color-white;
+    width: 180px;
+    box-shadow: $-ux-box-shadow-dark;
+    ul {
+      width: 180px;
+      font-size: $-ux-font-size-base;
+      li {
+        line-height: 40px;
+        cursor: pointer;
+        color: $-ux-color-text-placeholder;
+        div{
+          padding: 5px 10px;
+          i {
+            margin-right: 12px;
+            font-size: $-ux-font-size-large;
+          }
+          span {
+            width: 100px;
+            text-align: left;
+          }
+          em {
+            font-size: $-ux-font-size-small;
+            margin-left: 12px;
+            width: 12px;
+            height: 6px;
+          }
+          em.up {
+            background: url('../img/publiicon/uparrow.png');
+            background-size: 100% 100%;
+          }
+          em.down {
+            background: url('../img/publiicon/downarrow.png');
+            background-size: 100% 100%;
+          }
+        }
+        div:hover {
+          text-decoration: none;
+          background: #f5f5f5;
+        }
+        div.active {
+          background: $-ux-color-primary-light-3;
+          color: $-ux-color-white;
+          em.up {
+            background: url('../img/publiicon/uparrow-active.png');
+            background-size: 100% 100%;
+          }
+          em.down {
+            background: url('../img/publiicon/downarrow-active.png');
+            background-size: 100% 100%;
+          }
+        }
+        div.level2{
+          line-height: 32px;
+        }
+        .level3 em {
+          width: 12px;
+          height: 12px;
+          margin-right: 10px;
+          background: url('../img/publiicon/level3.png');
+          background-size: 100% 100%;
+        }
+        .level3 em.active {
+          background: url('../img/publiicon/level3h.png');
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+}

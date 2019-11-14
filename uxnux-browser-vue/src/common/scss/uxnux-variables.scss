@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* scss变量 */
+/* ---------- color ---------- */
+$-ux-color-white: #FFF!default;
+$-ux-color-black: #000!default;
+
+$-ux-color-primary: #1890FF!default;
+$-ux-color-primary-light-1: mix($-ux-color-white, $-ux-color-primary, 10%);
+$-ux-color-primary-light-2: mix($-ux-color-white, $-ux-color-primary, 20%);
+$-ux-color-primary-light-3: mix($-ux-color-white, $-ux-color-primary, 30%);
+$-ux-color-primary-light-4: mix($-ux-color-white, $-ux-color-primary, 40%);
+$-ux-color-primary-light-5: mix($-ux-color-white, $-ux-color-primary, 50%);
+$-ux-color-primary-light-6: mix($-ux-color-white, $-ux-color-primary, 60%);
+$-ux-color-primary-light-7: mix($-ux-color-white, $-ux-color-primary, 70%);
+$-ux-color-primary-light-8: mix($-ux-color-white, $-ux-color-primary, 80%);
+$-ux-color-primary-light-9: mix($-ux-color-white, $-ux-color-primary, 90%);
+
+$-ux-color-success: #3BBC3D!default;
+$-ux-color-error: #EB5A5C!default;
+$-ux-color-info: #242424!default;
+
+$-ux-color-text-placeholder: #b4bccc!default;
+
+/* ---------- background ---------- */
+
+$-ux-background-color-base: #F9F9F9!default;
+
+/* ---------- border ---------- */
+
+$-ux-border-width-base: 1px!default;
+$-ux-border-style-base: solid!default;
+$-ux-border-color-base: #E6EAED!default;
+$-ux-border-color-light: #D5DDE7!default;
+$-ux-border-radius-base: 4px!default;
+$-ux-border-radius-circle: 100%!default;
+$-ux-border-base: $-ux-border-width-base $-ux-border-style-base $-ux-border-color-base;
+
+/* ---------- box-shadow ---------- */
+
+$-ux-box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+$-ux-box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12);
+$-ux-box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+/* ---------- index ---------- */
+
+$-ux-index-normal: 1;
+$-ux-index-popup: 1000;
+
+/* ---------- disable ---------- */
+
+$-ux-disable-fill: $-ux-color-text-placeholder;
+$-ux-disable-color: $-ux-color-text-placeholder;
+$-ux-disable-border: $-ux-border-base;
+
+/* ---------- font ---------- */
+
+$-ux-font-famly-base: "Noto Sans CJK SC", "Source Han Sans CN"!default;
+$-ux-font-famly-thin: "Noto Sans CJK SC Thin", "Source Han Sans CN Thin"!default;
+$-ux-font-famly-light: "Noto Sans CJK SC Light", "Source Han Sans CN Light"!default;
+$-ux-font-famly-demiLight: "Noto Sans CJK SC DemiLight", "Source Han Sans CN DemiLight"!default;
+$-ux-font-famly-medium: "Noto Sans CJK SC Medium", "Source Han Sans CN Medium"!default;
+$-ux-font-famly-blod: "Noto Sans CJK SC Blod", "Source Han Sans CN Blod"!default;
+$-ux-font-famly-black: "Noto Sans CJK SC Black", "Source Han Sans CN Black"!default;
+$-ux-font-size-base: 14px!default;
+$-ux-font-size-small: 10px!default;
+$-ux-font-size-large: 18px!default;
+$-ux-font-weight-base: 500!default;
+$-ux-font-weight-thin: 100!default;
+$-ux-font-weight-blod: 700!default;
+
+/* ---------- button ---------- */
