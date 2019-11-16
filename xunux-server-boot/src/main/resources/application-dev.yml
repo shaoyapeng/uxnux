@@ -1,0 +1,42 @@
+spring:
+  # 数据源配置
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/uxnux?useUnicode=true&characterEncoding=utf8&serverTimezone=CST
+    username: root
+    password: root
+    hikari:
+      max-lifetime: 1800000 # 连接池存活时间 默认1800000毫秒 30 * 60 * 1000
+      read-only: false # 是否只读 默认 false
+      connection-timeout: 30000 # 链接的超时时间 默认 30秒 30 * 1000
+      auto-commit: false # 是否自动提交
+      pool-name: hikariCP-ux # 链接池名称
+      maximum-pool-size: 20 # 最大连接数
+  # flyway 配置
+  flyway:
+    clean-disabled: false # 使用启用clean指令 默认是false 注：clean 命令会删除指定 schema 下的所有 table
+    enabled: true # 是否启用 默认是true
+    locations: classpath:db/migration # 路径 默认是classpath:db/migration
+    baseline-version: 1 # 版本 默认是1
+    encoding: UTF-8 # 编码 默认UTF-8
+  # jpa 配置
+  jpa:
+    database: mysql # 使用什么数据库
+    show-sql: true # 是否在控制台打印sql
+    database-platform: org.hibernate.dialect.MySQL5Dialect # 数据库方言 ？
+server:
+  port: 8888 # 端口
+  error:
+    path: /error # 错误路径
+  servlet:
+    context-path: / # 上下文路径  *启动后请求的名称
+    session:
+      timeout: 30m # session 超时
+  tomcat:
+    max-threads: 100 # tomcat 最大线程数
+    uri-encoding: UTF-8 # 编码 默认UTF-8
+    accept-count: 100 # 达到最大线程后的排队数 默认 100
+    max-connections: 1000 # 最大链接数 默认 10000
+    connection-timeout: 60s # 等待超时时间 默认60s
+    min-spare-threads: 10 # 最小不活跃线程数 默认 10

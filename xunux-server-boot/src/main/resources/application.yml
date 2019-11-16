@@ -1,0 +1,11 @@
+# 公共配置
+spring:
+  profiles:
+    active: dev # 启用那个配置文件的配置
+  application:
+    name: @pom.artifactId@ # 取pom.xml的artifactId
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: Bearer  #JWT负载中拿到开头
