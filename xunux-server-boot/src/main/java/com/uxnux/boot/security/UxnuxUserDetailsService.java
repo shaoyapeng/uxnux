@@ -16,7 +16,7 @@ public class UxnuxUserDetailsService implements UserDetailsService {
     @Override
     public UxnuxUserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UxnuxUserDetails uxnuxUserDetails = new UxnuxUserDetails();
-        uxnuxUserDetails.setPassword("123456");
+        uxnuxUserDetails.setPassword("AL5riQzgwmMhXZX+5MtU0A==");
         uxnuxUserDetails.setUsername("admin");
         UxnuxGrantedAuthority uxnuxGrantedAuthority = new UxnuxGrantedAuthority();
         return uxnuxUserDetails;

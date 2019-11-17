@@ -1,5 +1,6 @@
 package com.uxnux.boot.security;
 
+import com.uxnux.boot.utils.CryptoUtils;
 import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -11,12 +12,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class UxnuxPasswordEncoder implements PasswordEncoder {
     @Override
     public String encode(CharSequence charSequence) {
-        return MD5Encoder.encode(((String)charSequence).getBytes());
+        return CryptoUtils.encryptAES((String)charSequence);
     }
 
     @Override
     public boolean matches(CharSequence charSequence, String s) {
         System.out.println(MD5Encoder.encode(s.getBytes()));
-        return s.equals(MD5Encoder.encode(((String)charSequence).getBytes()));
+        return s.equals(CryptoUtils.encryptAES((String)charSequence));
     }
 }
