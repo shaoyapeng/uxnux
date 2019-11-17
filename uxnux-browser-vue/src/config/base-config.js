@@ -1,0 +1,2 @@
+export let KEY = '1234123412ABCDEF'
+export let IV = 'ABCDEF1234123412'

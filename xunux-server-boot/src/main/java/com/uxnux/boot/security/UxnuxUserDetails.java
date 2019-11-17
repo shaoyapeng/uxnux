@@ -13,7 +13,12 @@ import java.util.List;
  * @Date: 2019/11/14 19:57
  * @Version: 1.0
  */
+@Data
 public class UxnuxUserDetails implements UserDetails {
+
+    private String username;
+
+    private String password;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<UxnuxGrantedAuthority> uxnuxGrantedAuthorities = new ArrayList<UxnuxGrantedAuthority>();
@@ -22,31 +27,31 @@ public class UxnuxUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return "123456";
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return "root";
+        return username;
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

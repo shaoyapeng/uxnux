@@ -1,7 +1,7 @@
 package com.uxnux.boot.security;
 
 import com.uxnux.boot.filter.JwtAuthenticationTokenFilter;
-import jdk.nashorn.internal.runtime.logging.Logger;
+import com.uxnux.boot.filter.UxnuxLoginFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +39,12 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
                 // 对所有的路径进行保护
                 .authorizeRequests()
                 // 不需要保护的请求
-                .antMatchers("/test1")
+                .antMatchers("/test1",
+                        "/*.html",
+                        "/swagger-resources/**",
+                        "/**/springfox-swagger-ui/**",
+                        "/v2/api-docs/**",
+                        "/favicon.ico")
                 .permitAll()
                 .antMatchers() // 可以加多个
                 .permitAll()
@@ -48,6 +53,7 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
         // 禁止用缓存
         httpSecurity.headers().cacheControl();
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterAt(uxnuxLoginFilter(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.exceptionHandling()
                 .accessDeniedHandler(restfulAccessDeniedHandler)
                 .authenticationEntryPoint(restAuthenticationEntryPoint);
@@ -62,7 +68,6 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
     @Bean
     JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() throws Exception {
         JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter = new JwtAuthenticationTokenFilter();
-        jwtAuthenticationTokenFilter.setAuthenticationManager(authenticationManager());
         return jwtAuthenticationTokenFilter;
     }
 
@@ -76,4 +81,27 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
         return new UxnuxPasswordEncoder();
     }
 
+    @Bean
+    UxnuxLoginFilter uxnuxLoginFilter() {
+        UxnuxLoginFilter uxnuxLoginFilter = new UxnuxLoginFilter();
+        try {
+            uxnuxLoginFilter.setFilterProcessesUrl("/login");
+            uxnuxLoginFilter.setAuthenticationSuccessHandler(uxnuxAuthenticationSuccessHandler());
+            uxnuxLoginFilter.setAuthenticationFailureHandler(uxnuxAuthenticationFailureHandler());
+            uxnuxLoginFilter.setAuthenticationManager(authenticationManager());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return uxnuxLoginFilter;
+    }
+
+    @Bean
+    UxnuxAuthenticationSuccessHandler uxnuxAuthenticationSuccessHandler() {
+        return new UxnuxAuthenticationSuccessHandler();
+    }
+
+    @Bean
+    UxnuxAuthenticationFailureHandler uxnuxAuthenticationFailureHandler() {
+        return new UxnuxAuthenticationFailureHandler();
+    }
 }

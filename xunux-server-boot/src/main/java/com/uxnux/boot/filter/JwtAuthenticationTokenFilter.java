@@ -3,17 +3,14 @@ package com.uxnux.boot.filter;
 import com.uxnux.boot.security.UxnuxUserDetails;
 import com.uxnux.boot.security.UxnuxUserDetailsService;
 import com.uxnux.boot.utils.JwtUtils;
+import com.uxnux.boot.utils.ObjectUtils;
 import com.uxnux.boot.utils.StringUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationServiceException;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -22,17 +19,20 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+/**
+ * JWT登录授权过滤器
+ */
 @Slf4j
-public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter {
+public class JwtAuthenticationTokenFilter extends GenericFilterBean {
 
     @Value("tokenHeader")
     private String tokenHeader;
     @Value("tokenHead")
     private String tokenHead;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
     private UxnuxUserDetailsService uxnuxUserDetailsService;
@@ -41,34 +41,28 @@ public class JwtAuthenticationTokenFilter extends UsernamePasswordAuthentication
     private JwtUtils jwtUtils;
 
     @Override
-    public void doFilter(HttpServletRequest request, HttpServletResponse response,
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("-----" + ((HttpServletRequest)servletRequest).getRequestURI());
         log.info("---------- 开始jwt token认证 ----------");
-        String token = ((HttpServletRequest)request).getHeader(tokenHeader);
-        if (StringUtils.isBlack(token)) {
-            log.info("---------- token不存在 ----------");
-            filterChain.doFilter(request, response);
-            return;
+        String token = ((HttpServletRequest)servletRequest).getHeader(tokenHeader);
+        String username = null;
+        UxnuxUserDetails uxnuxUserDetails = null;
+        if (!StringUtils.isBlack(token)) {
+            username = jwtUtils.getSubjectFromToken(token);
+            if (!StringUtils.isBlack(username)) {
+                uxnuxUserDetails = uxnuxUserDetailsService.loadUserByUsername(username);
+            }
+            if (!ObjectUtils.isEmpty(uxnuxUserDetails) && jwtUtils.validateToken(token, uxnuxUserDetails)) {
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                        uxnuxUserDetails, null, uxnuxUserDetails.getAuthorities()
+                );
+                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails((HttpServletRequest) servletRequest));
+                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                log.info("---------- jwt token认证 结束 ----------");
+            }
         }
-        if (jwtUtils.isTokenExpired(token)) {
-            log.info("---------- token过期 ----------");
-            filterChain.doFilter(request, response);
-            return;
-        }
-        String username = jwtUtils.getSubjectFromToken(token);
-        if (StringUtils.isBlack(username)) {
-            log.info("---------- 获取用户名失败 ----------");
-            filterChain.doFilter(request, response);
-            return;
-        }
-        UxnuxUserDetails uxnuxUserDetails = uxnuxUserDetailsService.loadUserByUsername(username);
-        if (uxnuxUserDetails == null) {
-            log.info("---------- 用户不存在 ----------");
-            filterChain.doFilter(request, response);
-            return;
-        }
-        UsernamePasswordAuthenticationToken authentication
-                = new UsernamePasswordAuthenticationToken(uxnuxUserDetails, null, uxnuxUserDetails.getAuthorities());
-        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        log.info("---------- jwt token认证 结束 ----------");
+        filterChain.doFilter(servletRequest, servletResponse);
     }
 }

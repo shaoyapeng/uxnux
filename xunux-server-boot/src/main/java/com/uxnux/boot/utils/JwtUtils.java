@@ -6,8 +6,12 @@ import io.jsonwebtoken.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.security.Key;
 import java.security.KeyStore;
 import java.security.PrivateKey;
@@ -38,14 +42,18 @@ public class JwtUtils {
 
     /**
      * 加载私钥和公钥
+     * keytool -genkey -alias uxnuxkey -keypass 011500 -keyalg RSA
+     * -keysize 1024 -validity 365 -keystore uxnux.jks
+     * -storepass 011500 -dname “CN=SHAO, OU=UX, O=UXNUX, L=LZ, ST=GS, C=CH”
      */
     static {
         try {
+            InputStream inputStream = new ClassPathResource("uxnux.jks").getInputStream();
             log.info("---------- 获取私钥和公钥开始 ----------");
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            privateKey = keyStore.isKeyEntry(KeyStore.getDefaultType()) ?
-                    (PrivateKey)keyStore.getKey("mytest", "mypass".toCharArray()): null;
-            publicKey = keyStore.getCertificate("mytest").getPublicKey();
+            keyStore.load(inputStream, "011500".toCharArray());
+            privateKey = (PrivateKey)keyStore.getKey("uxnuxkey", "011500".toCharArray());
+            publicKey = keyStore.getCertificate("uxnuxkey").getPublicKey();
             log.info("---------- 获取私钥和公钥成功 ----------");
         } catch (Exception e) {
             log.error("---------- 获取私钥和公钥异常 ----------", e);
@@ -121,6 +129,17 @@ public class JwtUtils {
     public boolean isTokenExpired(String token) {
         Date expiredDate = getExpiredDateFromToken(token);
         return expiredDate.before(new Date());
+    }
+
+    /**
+     *
+     * @param token
+     * @param userDetails
+     * @return
+     */
+    public boolean validateToken(String token, UserDetails userDetails) {
+        String username = getSubjectFromToken(token);
+        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
     /**
      * 生成token
