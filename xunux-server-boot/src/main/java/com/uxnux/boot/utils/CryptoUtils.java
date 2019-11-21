@@ -89,6 +89,11 @@ public class CryptoUtils {
         return cipherBytes;
     }
 
+    /**
+     * AES 加密
+     * @param src
+     * @return
+     */
     public static String encryptAES(String src) {
         String encryptResult = "";
         try {
@@ -114,6 +119,11 @@ public class CryptoUtils {
         return encryptResult;
     }
 
+    /**
+     * AES解密
+     * @param src
+     * @return
+     */
     public static String decryptAES(String src) {
         String decryptResult = "";
         try {

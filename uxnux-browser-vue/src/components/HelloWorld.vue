@@ -1,27 +1,37 @@
 <template>
   <div class="hello">
-    <HomeHeader></HomeHeader>
+    <!-- <HomeHeader></HomeHeader>
     <div>
       <LeftNav></LeftNav>
       <div class="content"></div>
-    </div>
+    </div> -->
+    <Calender>
+      <template slot="dateCell" slot-scope="{data}">
+        <div>{{data.year}} -- {{data.month}} -- {{data.day}}</div>
+        {{mrs}}
+      </template>
+    </Calender>
   </div>
 </template>
 
 <script>
-import HomeHeader from './frame/HomeHeader'
-import LeftNav from './frame/LeftNav'
+// import HomeHeader from './frame/HomeHeader'
+// import LeftNav from './frame/LeftNav'
+import Calender from './Basic/calendar/Calendar'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
   data () {
-    return {}
+    return {
+      mrs: 'test'
+    }
   },
   components: {
-    HomeHeader,
-    LeftNav
+    // HomeHeader,
+    // LeftNav,
+    Calender
   }
 }
 </script>
