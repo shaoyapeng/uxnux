@@ -20,7 +20,8 @@ public class UxnuxAuthenticationSuccessHandler implements AuthenticationSuccessH
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse
             httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        log.info("登录成功", authentication.getPrincipal().toString());
+        log.info("---------- 登录成功 ----------");
+        log.info("---------- 用户：" + authentication.getPrincipal() + " ----------");
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
         OutputStream outputStream = httpServletResponse.getOutputStream();

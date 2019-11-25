@@ -19,9 +19,11 @@ public class UxnuxUserDetails implements UserDetails {
     private String username;
 
     private String password;
+
+    private List<UxnuxGrantedAuthority> uxnuxGrantedAuthorities;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<UxnuxGrantedAuthority> uxnuxGrantedAuthorities = new ArrayList<UxnuxGrantedAuthority>();
         return uxnuxGrantedAuthorities;
     }
 
@@ -35,23 +37,47 @@ public class UxnuxUserDetails implements UserDetails {
         return username;
     }
 
+    /**
+     * 判断账号是否过期
+     * @return true 没过期，false，过期
+     */
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    /**
+     * 判断账号是否锁定
+     * @return true 没过期，false，过期
+     */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    /**
+     * 凭证是否过期
+     * @return true 没过期，false，过期
+     */
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    /**
+     * 是否用
+     * @return true 启用，false，没启用
+     */
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    /**
+     * 权限list
+     * @param uxnuxGrantedAuthorities
+     */
+    public void setAuthorities(List<UxnuxGrantedAuthority> uxnuxGrantedAuthorities) {
+        this.uxnuxGrantedAuthorities = uxnuxGrantedAuthorities;
     }
 }

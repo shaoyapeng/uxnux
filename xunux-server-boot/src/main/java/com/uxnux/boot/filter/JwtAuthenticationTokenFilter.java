@@ -43,7 +43,6 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("-----" + ((HttpServletRequest)servletRequest).getRequestURI());
         log.info("---------- 开始jwt token认证 ----------");
         String token = ((HttpServletRequest)servletRequest).getHeader(tokenHeader);
         String username = null;

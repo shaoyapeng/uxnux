@@ -21,7 +21,8 @@ public class UxnuxAuthenticationFailureHandler implements AuthenticationFailureH
     public void onAuthenticationFailure(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         AuthenticationException e) throws IOException, ServletException {
-        log.info("登录失败", e.getMessage());
+        log.info("---------- 登录失败 ----------");
+        log.info("---------- 异常：" + e.getMessage() + " ----------");
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
         OutputStream outputStream = httpServletResponse.getOutputStream();
