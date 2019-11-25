@@ -7,6 +7,10 @@ import '@/assets/scss/index.scss'
 
 import '@/common/css/fontbase/iconfont.css'
 
+import VueParticles from 'vue-particles'
+
+Vue.use(VueParticles)
+
 Vue.config.productionTip = false
 
 new Vue({
