@@ -19,4 +19,10 @@ public class TestController {
     public String test () {
         return "test";
     }
+
+    @RequestMapping("/test2")
+    @ApiOperation(value = "测试名称2", notes = "测试接口描述2", httpMethod = "POST")
+    public String test2 () {
+        return "test2";
+    }
 }

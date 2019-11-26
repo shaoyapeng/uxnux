@@ -21,19 +21,18 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-
 /**
- * JWT登录授权过滤器
+ * @Author: 10785
+ * @Date: 2019/11/14 19:56
+ * @Version: 1.0
  */
 @Slf4j
 public class JwtAuthenticationTokenFilter extends GenericFilterBean {
 
-    @Value("tokenHeader")
+    @Value("${jwt.tokenHeader}")
     private String tokenHeader;
-    @Value("tokenHead")
+    @Value("${jwt.tokenHead}")
     private String tokenHead;
-    private AuthenticationManager authenticationManager;
-
     @Autowired
     private UxnuxUserDetailsService uxnuxUserDetailsService;
 

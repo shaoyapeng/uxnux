@@ -23,7 +23,7 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
     public void handle(HttpServletRequest httpServletRequest,
                        HttpServletResponse httpServletResponse,
                        AccessDeniedException e) throws IOException, ServletException {
-        log.info("没有访问权限 ----- RestfulAccessDeniedHandler", e.getMessage());
+        log.info("没有访问权限 ----- RestfulAccessDeniedHandler", e);
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
         OutputStream outputStream = httpServletResponse.getOutputStream();

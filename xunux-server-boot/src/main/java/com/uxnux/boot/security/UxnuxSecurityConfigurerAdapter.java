@@ -36,6 +36,7 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
                 // 关闭session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .csrf().disable()
                 // 对所有的路径进行保护
                 .authorizeRequests()
                 // 不需要保护的请求

@@ -1,0 +1,1 @@
+INSERT INTO sys_user VALUES ('1', 'admin', 'admin', 'AL5riQzgwmMhXZX+5MtU0A==', '1', '18', '18119386597', '0', '1078547668@qq.com', '01', '2019-11-26 11:11:11', '2019-11-26 11:11:11');

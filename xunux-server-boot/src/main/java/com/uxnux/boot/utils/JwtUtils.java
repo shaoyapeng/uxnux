@@ -161,12 +161,13 @@ public class JwtUtils {
             jwtBuilder.setExpiration(getExpiration());
             jwtBuilder.setSubject(subject);
             // key 不为空，使用密钥加密，为空，使用固定字符串加密
-            jwtBuilder = key == null ? jwtBuilder.signWith(sign, key) : StringUtils.isBlack(secret)
-                    ? jwtBuilder.signWith(sign, this.secret) : jwtBuilder.signWith(sign, secret);
+            log.info("---------- " + !ObjectUtils.isEmpty(key) + " ----------");
+            jwtBuilder = !ObjectUtils.isEmpty(key) ? jwtBuilder.signWith(sign, key) : (StringUtils.isBlack(secret)
+                    ? jwtBuilder.signWith(sign, this.secret) : jwtBuilder.signWith(sign, secret));
             log.info("---------- 生成token成功 ----------");
             return jwtBuilder.compact();
         } catch (Exception e) {
-            log.error("---------- 生成token失败返回空字符串 ----------", e);
+            log.error("---------- 生成token失败 ----------", e);
             e.printStackTrace();
             return "";
         }
