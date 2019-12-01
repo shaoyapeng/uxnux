@@ -1,0 +1,15 @@
+server:
+  port: 8084
+
+spring:
+  cloud:
+    config:
+      enabled: true
+      server:
+        git:
+          uri: https://github.com/shaoyapeng/uxnux/
+          username: shaoyapeng
+          password: Syp011500*
+          default-label: developer
+          search-paths: config-manager
+
