@@ -13,12 +13,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.GenericFilterBean;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -27,7 +29,7 @@ import java.io.IOException;
  * @Version: 1.0
  */
 @Slf4j
-public class JwtAuthenticationTokenFilter extends GenericFilterBean {
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Value("${jwt.tokenHeader}")
     private String tokenHeader;
@@ -40,10 +42,9 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
     private JwtUtils jwtUtils;
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-                         FilterChain filterChain) throws IOException, ServletException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         log.info("---------- 开始jwt token认证 ----------");
-        String token = ((HttpServletRequest)servletRequest).getHeader(tokenHeader);
+        String token = httpServletRequest.getHeader(tokenHeader);
         String username = null;
         UxnuxUserDetails uxnuxUserDetails = null;
         if (!StringUtils.isBlack(token)) {
@@ -53,14 +54,14 @@ public class JwtAuthenticationTokenFilter extends GenericFilterBean {
             }
             if (!ObjectUtils.isEmpty(uxnuxUserDetails) && jwtUtils.validateToken(token, uxnuxUserDetails)) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                        uxnuxUserDetails, null, uxnuxUserDetails.getAuthorities()
+                        uxnuxUserDetails.getUsername(), uxnuxUserDetails.getPassword(), uxnuxUserDetails.getAuthorities()
                 );
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails((HttpServletRequest) servletRequest));
+                authenticationToken.setDetails(uxnuxUserDetails);
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                log.info("---------- jwt token认证 结束 ----------");
+                log.info("---------- jwt token认证成功 ----------");
             }
         }
-        log.info("---------- jwt token认证 结束 ----------");
-        filterChain.doFilter(servletRequest, servletResponse);
+        log.info("---------- jwt token认证结束 ----------");
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

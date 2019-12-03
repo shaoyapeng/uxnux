@@ -37,6 +37,7 @@ public class UxnuxUserDetailsService implements UserDetailsService {
         uxnuxUserDetails.setPassword(sysUser.getPassword());
         uxnuxUserDetails.setUsername(s);
         UxnuxGrantedAuthority uxnuxGrantedAuthority = new UxnuxGrantedAuthority();
+        uxnuxGrantedAuthority.setAuthority("/test3");
         uxnuxUserDetails.setAuthorities(new ArrayList<UxnuxGrantedAuthority>());
         return uxnuxUserDetails;
     }

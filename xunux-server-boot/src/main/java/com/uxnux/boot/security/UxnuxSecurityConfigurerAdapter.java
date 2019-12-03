@@ -31,38 +31,51 @@ public class UxnuxSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter
 
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        // 关闭cors
-        httpSecurity.cors().disable()
-                // 关闭session
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        httpSecurity.cors() // 支持跨域
                 .and()
-                .csrf().disable()
+                .sessionManagement().disable() // 关闭session
+                .csrf().disable() // 关闭csrf
+                .formLogin().disable() // 禁用form登录
                 // 对所有的路径进行保护
                 .authorizeRequests()
                 // 不需要保护的请求
-                .antMatchers("/test1",
-                        "/*.html",
+                .antMatchers("/*.html",
                         "/swagger-resources/**",
                         "/**/springfox-swagger-ui/**",
                         "/v2/api-docs/**",
                         "/favicon.ico")
-                .permitAll()
-                .antMatchers() // 可以加多个
-                .permitAll()
+                .permitAll() // 不需要认证的资源
+                //.antMatchers("/admin")
+                // 只有某个角色可以访问的资源: /admin 只有admin角色的可以访问
+                //hasAnyRole("admin")
                 .anyRequest() // 除了上面过滤的请求，全部保护
-                .authenticated();
+                .authenticated()
+                .and()
+                .logout()
+                // 退出url
+                .logoutUrl("/logout");
+                // .addLogoutHandler() // 退出拦截
+                // .logoutSuccessUrl("/"); // 退出成功
+
         // 禁止用缓存
         httpSecurity.headers().cacheControl();
+        // 添加自定义filter
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.addFilterAt(uxnuxLoginFilter(), UsernamePasswordAuthenticationFilter.class);
-        httpSecurity.exceptionHandling()
+        httpSecurity
+                // 异常 没加
+                .exceptionHandling()
+                // 没有访问权限
                 .accessDeniedHandler(restfulAccessDeniedHandler)
+                // 认证失败
                 .authenticationEntryPoint(restAuthenticationEntryPoint);
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        // 设置userDetailsService
         auth.userDetailsService(uxnuxUserDetailsService())
+                // 加密
                 .passwordEncoder(uxnuxPasswordEncoder());
     }
 

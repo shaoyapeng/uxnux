@@ -1,6 +1,3 @@
-server:
-  port: 8084
-
 spring:
   cloud:
     config:
@@ -12,4 +9,20 @@ spring:
           password: Syp011500*
           default-label: developer
           search-paths: config-manager
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  instance:
+    hostname: 127.0.0.1
+    port: 8001
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root
+
 

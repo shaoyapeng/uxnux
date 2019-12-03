@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1760354-ac7e-4aa8-a7dd-4f01b4455d6a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uxnux-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../uxnux-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uxnux-config/src/main/java/com/uxnux/config/UxnuxConfigApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../uxnux-config/src/main/java/com/uxnux/config/UxnuxConfigApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../uxnux-config/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../uxnux-config/src/main/resources/bootstrap.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/filter/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/filter/JwtAuthenticationTokenFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/security/UxnuxSecurityConfigurerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/security/UxnuxSecurityConfigurerAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/security/UxnuxUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../xunux-server-boot/src/main/java/com/uxnux/boot/security/UxnuxUserDetailsService.java" afterDir="false" />
@@ -17,11 +21,11 @@
     <session id="751208381">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.open.time.41" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.open.time.41" value="2" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -68,10 +72,10 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="319" />
     <option name="y" value="44" />
-    <option name="width" value="989" />
+    <option name="width" value="827" />
     <option name="height" value="762" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -80,6 +84,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
@@ -93,14 +98,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574946960428" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../uxnux-config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../xunux-server-boot" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
@@ -129,18 +133,19 @@
       <updated>1574946181346</updated>
       <workItem from="1574946182846" duration="769000" />
       <workItem from="1574990397065" duration="1843000" />
-      <workItem from="1575169506640" duration="126000" />
+      <workItem from="1575169506640" duration="625000" />
+      <workItem from="1575253321980" duration="35000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2738000" />
+    <option name="totallyTimeSpent" value="3272000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06289978" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.063432835" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
