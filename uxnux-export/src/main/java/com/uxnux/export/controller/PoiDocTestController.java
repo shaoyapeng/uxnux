@@ -38,6 +38,9 @@ public class PoiDocTestController {
                 "求建议要求建议要求建议要求建议要求建议要求建议要求建议要" +
                 "求建议要求建议要求建议要求建议要求建议要求");
         map.put("satisfied", "√");
+        map.put("management_autograph", new PictureRenderData(100, 30, "D:\\autograph.png"));
+        map.put("undertake_autograph", new PictureRenderData(100, 30, "D:\\autograph.png"));
+        map.put("proposal_autograph", new PictureRenderData(100, 30, "D:\\autograph.png"));
         String templateName = "红古区人大代表建议承办情况征询意见表.docx";
         String fileName = "poi测试文档导出.doc";
         try {
