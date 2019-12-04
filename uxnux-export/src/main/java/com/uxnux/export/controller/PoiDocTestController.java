@@ -22,10 +22,23 @@ public class PoiDocTestController {
     @RequestMapping(value = "/poiDocTest")
     public void poiDocTest(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("name", "邵亚鹏");
-        map.put("sex", "男");
-        map.put("img", new PictureRenderData(100, 100, "D:\\logo.jpg"));
-        String templateName = "test.docx";
+        map.put("header", "红古区人大代表建议承办情况征询意见表");
+        map.put("title", "红古区人大代表建议承办情况");
+        map.put("number", "HG-201901287");
+        map.put("deputy_name", "邵亚鹏");
+        map.put("deputy_company", "中国电信中电万维公司");
+        map.put("undertake_idea", "测试测试测试测试测试测试测试测试测试测试测试测试测" +
+                "试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测" +
+                "试测试测试测试测试测试测试测试测试测试测试");
+        map.put("management_idea", "区政府分管领导意见区政府分管领导意见区政府分管领导" +
+                "意见区政府分管领导意见区政府分管领导意见区政府分" +
+                "管领导意见区政府分管领导意见区政府分管领导意见");
+        map.put("proposal_require", "建议要求建议要求建议要求建议要求建议要求建议要求建" +
+                "议要求建议要求建议要求建议要求建议要求建议要求建议要求建议要求建议要求建议要" +
+                "求建议要求建议要求建议要求建议要求建议要求建议要求建议要" +
+                "求建议要求建议要求建议要求建议要求建议要求");
+        map.put("satisfied", "√");
+        String templateName = "红古区人大代表建议承办情况征询意见表.docx";
         String fileName = "poi测试文档导出.doc";
         try {
             PoiDocTemplateUtils.generate(templateName, map, response, fileName);
