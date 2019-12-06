@@ -1,0 +1,9 @@
+ftp:
+  username: FTP_USER
+  password: S011500*
+  host: 10.18.32.125
+  port: 21
+  baseUrl: /
+  defaultPathNameFormat: yyyy-MM-dd
+
+
