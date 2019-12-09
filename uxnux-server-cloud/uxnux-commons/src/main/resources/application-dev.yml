@@ -7,3 +7,8 @@ ftp:
   defaultPathNameFormat: yyyy-MM-dd
 
 
+spring:
+  devtools:
+    remote:
+      restart:
+        enabled: true

@@ -35,4 +35,9 @@ public class FileTestController {
         FTPUtils.downFile("2019-12-05", "test.jpg", response, "测试.jpg");
     }
 
+    @RequestMapping("/testDownFileToLocation")
+    void testDownFileToLocation() {
+
+    }
+
 }

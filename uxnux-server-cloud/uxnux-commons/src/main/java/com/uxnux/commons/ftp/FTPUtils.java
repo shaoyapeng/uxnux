@@ -27,7 +27,7 @@ public class FTPUtils {
      * 问题：静态变量无法直接使用@Autowired 进行注入，但是可以通过 set方法进行注入。注意：set方法不能是静态的。
      * 同时FTPProperties必须加@Component注解进行扫描
      * 因为静态变量是类的属性，所以在类初始化的时候已经进行加载，所以在bean注入之前就已经加载，导致注入失败
-     * @param properties
+     * @param properties properties
      */
     @Autowired
     private void setProperties(FTPProperties properties) {
@@ -147,8 +147,9 @@ public class FTPUtils {
      */
     private static InputStream loadFile(String pathName, String fileName) {
         InputStream is = null;
+        FTPClient client = null;
         try {
-            FTPClient client = initFTPClient();
+            client = initFTPClient();
             if (client == null) {
                 return null;
             }
@@ -159,6 +160,15 @@ public class FTPUtils {
             is = client.retrieveFileStream(fileName);
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (client != null && client.isConnected()) {
+                    client.logout();
+                    client.disconnect();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return is;
     }
@@ -234,6 +244,11 @@ public class FTPUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return FTPStatusEnum.OPERATION_SUCCESS;
+    }
+
+    public static FTPStatusEnum delFile() {
+
         return FTPStatusEnum.OPERATION_SUCCESS;
     }
 }
