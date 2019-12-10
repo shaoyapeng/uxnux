@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.*;
 
 /**
- * 自己写的word导出类，使用的模板是${}，只能替换普通的文本，基本无用
+ * 自己写的word导出类，使用的模板是${}，只能替换普通的文本
  * @Author: 10785
  * @Date: 2019/12/2 18:55
  * @Version: 1.0

@@ -4,7 +4,7 @@
 $-ux-color-white: #FFF!default;
 $-ux-color-black: #000!default;
 
-$-ux-color-primary: #1890FF!default;
+$-ux-color-primary: #22252a!default;
 $-ux-color-primary-light-1: mix($-ux-color-white, $-ux-color-primary, 10%);
 $-ux-color-primary-light-2: mix($-ux-color-white, $-ux-color-primary, 20%);
 $-ux-color-primary-light-3: mix($-ux-color-white, $-ux-color-primary, 30%);
@@ -19,18 +19,22 @@ $-ux-color-success: #3BBC3D!default;
 $-ux-color-error: #EB5A5C!default;
 $-ux-color-info: #242424!default;
 
-$-ux-color-text-placeholder: #b4bccc!default;
+$-ux-color-font-base: #909399;
+$-ux-color-font-light: #C0C4CC;
+$-ux-color-font-active: #DB6574;
+
+$-ux-color-text-placeholder: #6a6c70!default;
 
 /* ---------- background ---------- */
 
-$-ux-background-color-base: #F9F9F9!default;
+$-ux-background-color-base: #2d3035!default;
 
 /* ---------- border ---------- */
 
 $-ux-border-width-base: 1px!default;
 $-ux-border-style-base: solid!default;
-$-ux-border-color-base: #E6EAED!default;
-$-ux-border-color-light: #D5DDE7!default;
+$-ux-border-color-base: #6a6c70!default;
+$-ux-border-color-light: #C0C4CC!default;
 $-ux-border-radius-base: 4px!default;
 $-ux-border-radius-circle: 100%!default;
 $-ux-border-base: $-ux-border-width-base $-ux-border-style-base $-ux-border-color-base;
@@ -69,3 +73,5 @@ $-ux-font-weight-thin: 100!default;
 $-ux-font-weight-blod: 700!default;
 
 /* ---------- button ---------- */
+
+$-ux-button-primary: #fff;

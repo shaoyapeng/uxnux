@@ -1,18 +1,18 @@
 <template>
   <div id='raphael' class='hello'>
-    <!-- <HomeHeader></HomeHeader>
+    <HomeHeader></HomeHeader>
     <div>
       <LeftNav></LeftNav>
       <div class='content'></div>
     </div>
-    <Calender>
+    <!-- <Calender>
       <template slot='dateCell' slot-scope='{data}'>
         <div>{{data.year}} -- {{data.month}} -- {{data.day}}</div>
         {{mrs}}
       </template>
     </Calender> -->
-    <Raphael width="1000" height="700" :ellipseOptionList="ellipseOptionList"></Raphael>
-    <vue-particles
+    <!-- <Raphael width="1000" height="700" :ellipseOptionList="ellipseOptionList"></Raphael> -->
+    <!-- <vue-particles
         class='particles'
         :particleOpacity='0.7'
         linesColor='#aaa'
@@ -29,16 +29,16 @@
         :clickEffect='true'
         clickMode='push'
       >
-    </vue-particles>
+    </vue-particles> -->
   </div>
 </template>
 
 <script>
 
-// import HomeHeader from './frame/HomeHeader'
-// import LeftNav from './frame/LeftNav'
+import HomeHeader from './frame/HomeHeader'
+import LeftNav from './frame/LeftNav'
 // import Calender from './Basic/calendar/Calendar'
-import Raphael from './Basic/raphael/Raphael'
+// import Raphael from './Basic/raphael/Raphael'
 export default {
   name: 'HelloWorld',
   props: {
@@ -46,53 +46,55 @@ export default {
   },
   data () {
     return {
-      ellipseOptionList: [{
-        id: 0,
-        'x': 100,
-        'y': 100,
-        'xr': 25,
-        'yr': 25,
-        'text': '',
-        'fill': '#fdad00',
-        'stroke': '#fd8613',
-        'fillLiner': '90-#fd7600:20-#fde400',
-        'strokeLiner': '90-#fd7600:20-#fde400',
-        'textColor': '#666666',
-        'fontSize': 14,
-        lineList: [{ index: 1, path: 'M10 0L0 0' }, { index: 2, path: 'M10 0L0 0' }]
-      }, {
-        id: 1,
-        'x': 200,
-        'y': 200,
-        'xr': 25,
-        'yr': 25,
-        'text': '',
-        'fill': '#ef4799',
-        'stroke': '#ef4799',
-        'fillLiner': '90-#d316d8:20-#fe6375',
-        'strokeLiner': '90-#d316d8:20-#fe6375',
-        'textColor': '#666666',
-        'fontSize': 14,
-        lineList: []
-      }, {
-        id: 2,
-        'x': 300,
-        'y': 200,
-        'xr': 25,
-        'yr': 25,
-        'text': '',
-        'fill': '#43a1f7',
-        'stroke': '#43a1f7',
-        'fillLiner': '90-#2381ec:20-#39dafe',
-        'strokeLiner': '90-#2381ec:20-#39dafe',
-        'textColor': '#666666',
-        'fontSize': 14,
-        lineList: []
-      }]
+      // ellipseOptionList: [{
+      //   id: 0,
+      //   'x': 100,
+      //   'y': 100,
+      //   'xr': 25,
+      //   'yr': 25,
+      //   'text': '',
+      //   'fill': '#fdad00',
+      //   'stroke': '#fd8613',
+      //   'fillLiner': '90-#fd7600:20-#fde400',
+      //   'strokeLiner': '90-#fd7600:20-#fde400',
+      //   'textColor': '#666666',
+      //   'fontSize': 14,
+      //   lineList: [{ index: 1, path: 'M10 0L0 0' }, { index: 2, path: 'M10 0L0 0' }]
+      // }, {
+      //   id: 1,
+      //   'x': 200,
+      //   'y': 200,
+      //   'xr': 25,
+      //   'yr': 25,
+      //   'text': '',
+      //   'fill': '#ef4799',
+      //   'stroke': '#ef4799',
+      //   'fillLiner': '90-#d316d8:20-#fe6375',
+      //   'strokeLiner': '90-#d316d8:20-#fe6375',
+      //   'textColor': '#666666',
+      //   'fontSize': 14,
+      //   lineList: []
+      // }, {
+      //   id: 2,
+      //   'x': 300,
+      //   'y': 200,
+      //   'xr': 25,
+      //   'yr': 25,
+      //   'text': '',
+      //   'fill': '#43a1f7',
+      //   'stroke': '#43a1f7',
+      //   'fillLiner': '90-#2381ec:20-#39dafe',
+      //   'strokeLiner': '90-#2381ec:20-#39dafe',
+      //   'textColor': '#666666',
+      //   'fontSize': 14,
+      //   lineList: []
+      // }]
     }
   },
   components: {
-    Raphael
+    // Raphael
+    HomeHeader,
+    LeftNav
   },
   mounted () {
   },

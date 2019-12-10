@@ -9,6 +9,8 @@ import lombok.Data;
  */
 @Data
 public class DmDataTest {
+
     private Integer testId;
+
     private String testName;
 }

@@ -1,20 +1,21 @@
 body {
+  color: $-ux-color-font-base;
   background: $-ux-background-color-base;
   /* ----- 头部 ----- */
   .homeheader {
-    background: $-ux-color-primary;
+    background: $-ux-background-color-base;
     position: absolute;
-    height: 60px;
+    height: 56px;
     top: 0;
     left: 0;
     right: 0;
-    padding: 15px 0px;
+    padding: 8px 0px;
     box-shadow: $-ux-box-shadow-base;
     .logo {
       width: 200px;
       height: inherit;
       font-size: 36px;
-      color:$-ux-color-white;
+      color: $-ux-color-white;
       font-weight: $-ux-font-weight-blod;
       cursor: pointer;
     }
@@ -29,27 +30,27 @@ body {
   }
   .leftnav {
     position: absolute;
-    top: 90px;
+    top: 72px;
     left: 0;
     bottom: 0;
-    background: $-ux-color-white;
-    width: 180px;
+    background: $-ux-background-color-base;
+    width: 240px;
     box-shadow: $-ux-box-shadow-dark;
     ul {
-      width: 180px;
+      width: 240px;
       font-size: $-ux-font-size-base;
       li {
-        line-height: 40px;
         cursor: pointer;
-        color: $-ux-color-text-placeholder;
         div{
-          padding: 5px 10px;
+          padding: 15px 10px;
           i {
             margin-right: 12px;
             font-size: $-ux-font-size-large;
+            padding-right: 12px;
+            border-right: 1px solid $-ux-color-font-base;
           }
           span {
-            width: 100px;
+            width: 140px;
             text-align: left;
           }
           em {
@@ -69,11 +70,10 @@ body {
         }
         div:hover {
           text-decoration: none;
-          background: #f5f5f5;
+          background: $-ux-color-primary-light-1;
         }
         div.active {
-          background: $-ux-color-primary-light-3;
-          color: $-ux-color-white;
+          color: $-ux-color-font-active;
           em.up {
             background: url('../img/publiicon/uparrow-active.png');
             background-size: 100% 100%;
@@ -82,22 +82,65 @@ body {
             background: url('../img/publiicon/downarrow-active.png');
             background-size: 100% 100%;
           }
+          i {
+            border-right: 1px solid $-ux-color-font-active;
+          }
         }
-        div.level2{
-          line-height: 32px;
+        div.level1.active {
+          background: $-ux-color-primary-light-1;
         }
-        .level3 em {
+        div.level2.active {
+          background: $-ux-color-primary-light-2;
+        }
+        div.level3 em {
           width: 12px;
           height: 12px;
           margin-right: 10px;
           background: url('../img/publiicon/level3.png');
           background-size: 100% 100%;
         }
-        .level3 em.active {
+        div.level3.active {
+          background: $-ux-color-primary-light-3;
+        }
+        div.level3.active em {
           background: url('../img/publiicon/level3h.png');
           background-size: 100% 100%;
         }
       }
+    }
+  }
+  .content {
+    position: absolute;
+    background: $-ux-color-primary;
+    left: 240px;
+    padding: 0;
+    top: 72px;
+    right: 0;
+    bottom: 0;
+  }
+  .login-content {
+    position: absolute;
+    top: calc(50% - 260px);
+    left: calc(50% - 130px);
+    width: 260px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255,255,255,.1);
+    border-radius: $-ux-border-radius-base;
+    .login-group + .login-group {
+      margin: 12px 0 0 0;
+    }
+    input {
+      background-color:transparent;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid $-ux-border-color-base;
+      padding: 10px 0;
+      color: $-ux-color-font-base;
+      outline:none;
+    }
+    button {
+      width: 100%;
     }
   }
 }

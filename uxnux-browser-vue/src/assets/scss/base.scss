@@ -1,0 +1,36 @@
+.ux-btn {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: $-ux-background-color-base;
+  border: 1px solid $-ux-border-color-base;
+  color: $-ux-color-font-base;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.ux-btn:active {
+  border: 1px solid $-ux-border-color-light;
+  color: $-ux-color-font-light;
+}
+.ux-btn:hover {
+  border: 1px solid $-ux-border-color-light;
+  color: $-ux-color-font-light;
+}
+.ux-a {
+  color: $-ux-color-font-base;
+}
+.ux-a:hover {
+  color: $-ux-color-font-light;
+}
