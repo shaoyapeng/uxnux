@@ -1,13 +1,13 @@
 package com.uxnux.commons.export;
 
 import com.deepoove.poi.XWPFTemplate;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.ResourceUtils;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -129,5 +129,44 @@ public class PoiDocTemplateUtils {
         os.flush();
         os.close();
         template.close();
+    }
+
+    private static InputStream getInputStreamToTemplate(XWPFTemplate template, String fileName) {
+        InputStream is = null;
+        ByteArrayOutputStream os = null;
+        try {
+            List<Byte> byteList = new ArrayList<Byte>();
+            os = new ByteArrayOutputStream();
+            template.write(os);
+            is = new ByteArrayInputStream(os.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return is;
+    }
+
+    public static void generateZip(String fileName, String templateName, Map model, HttpServletResponse response, String zipFileName)
+            throws IOException {
+        File file = getTemplatePath(templateName);
+        XWPFTemplate template = createResultByTemplate(file, model);
+        InputStream is = getInputStreamToTemplate(template, zipFileName);
+        ZipMultiFileUtils.zipFile(zipFileName, response, is, zipFileName);
+    }
+
+    public static void generateZip(String templateName, List<Map<String, Object>> models, HttpServletResponse response, String zipFileName)
+            throws IOException {
+        List<InputStream> isList = new ArrayList<>();
+        List<String> fileNames = new ArrayList<>();
+        for (Map map: models) {
+            Map model = (Map) map.get("model");
+            String fileName = (String) map.get("fileName");
+            File file = getTemplatePath(templateName);
+            XWPFTemplate template = createResultByTemplate(file, model);
+            InputStream is = getInputStreamToTemplate(template, zipFileName);
+            isList.add(is);
+            fileNames.add(fileName);
+        }
+        ZipMultiFileUtils.zipFiles(isList, response, fileNames, zipFileName);
+
     }
 }

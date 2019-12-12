@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,9 +46,22 @@ public class PoiDocTestController {
         map.put("undertake_autograph", new PictureRenderData(100, 30, "D:\\autograph.png"));
         map.put("proposal_autograph", new PictureRenderData(100, 30, "D:\\autograph.png"));
         String templateName = "红古区人大代表建议承办情况征询意见表.docx";
+        String zipFileName = "poi测试文档导出.zip";
         String fileName = "poi测试文档导出.doc";
+        List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
+        Map model = new HashMap();
+        model.put("model", map);
+        model.put("fileName", "poi测试文档导出1.doc");
+        mapList.add(model);
+        model = new HashMap();
+        model.put("model", map);
+        model.put("fileName", "poi测试文档导出2.doc");
+        mapList.add(model);
         try {
-            PoiDocTemplateUtils.generate(templateName, map, response, fileName);
+            // 导出多个并进行压缩
+            PoiDocTemplateUtils.generateZip(templateName, mapList, response, zipFileName);
+            // 导出一个并进行压缩
+            // PoiDocTemplateUtils.generateZip(fileName, templateName, map, response, zipFileName);
         } catch (IOException e) {
             e.printStackTrace();
         }

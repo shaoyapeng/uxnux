@@ -1,6 +1,6 @@
 import axios from 'axios'
 // 引用默认的变量或者方法不需要用 {}
-import { baseUrl } from '../api/url'
+import { baseUrl } from '@/config/base-config'
 
 /** 添加默认axios配置 */
 /**
