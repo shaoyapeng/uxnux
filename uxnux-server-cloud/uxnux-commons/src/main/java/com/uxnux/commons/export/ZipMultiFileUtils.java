@@ -1,6 +1,5 @@
 package com.uxnux.commons.export;
 
-import com.deepoove.poi.XWPFTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletResponse;
@@ -82,11 +81,7 @@ public class ZipMultiFileUtils {
             }
         }
         if (zipOutputStream != null) {
-            try {
-                zipOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            close(zipOutputStream);
         }
 
     }
@@ -97,14 +92,18 @@ public class ZipMultiFileUtils {
         zipOutputStream = putEntry(zipOutputStream, zipEntry);
         writeToZipOutputStream(is, zipOutputStream);
         if (zipOutputStream != null) {
-            try {
-                zipOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            close(zipOutputStream);
         }
     }
 
+    private static void close(ZipOutputStream zipOutputStream) {
+        try {
+            zipOutputStream.close();
+        } catch (IOException e) {
+            log.error("----------zipOutputStream流关闭错误");
+            e.printStackTrace();
+        }
+    }
 
 
     public static void zipFile(String fileName, HttpServletResponse response, InputStream is, String zipFileName) {
@@ -124,11 +123,7 @@ public class ZipMultiFileUtils {
             e.printStackTrace();
         }
         if (zipOutputStream != null) {
-            try {
-                zipOutputStream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            close(zipOutputStream);
         }
     }
 
