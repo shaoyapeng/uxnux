@@ -51,10 +51,12 @@ public class PoiDocTestController {
         List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
         Map model = new HashMap();
         model.put("model", map);
-        model.put("fileName", "poi测试文档导出1.doc");
+        // 文件夹 test 下面的文件是test/poi测试文档导出1.doc
+        model.put("fileName", "test/poi测试文档导出1.doc");
         mapList.add(model);
         model = new HashMap();
         model.put("model", map);
+        // 没有文件夹，直接压缩
         model.put("fileName", "poi测试文档导出2.doc");
         mapList.add(model);
         try {

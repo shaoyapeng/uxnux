@@ -144,6 +144,15 @@ public class PoiDocTemplateUtils {
         return is;
     }
 
+    /**
+     *
+     * @param fileName
+     * @param templateName
+     * @param model
+     * @param response
+     * @param zipFileName
+     * @throws IOException
+     */
     public static void generateZip(String fileName, String templateName, Map model, HttpServletResponse response, String zipFileName)
             throws IOException {
         File file = getTemplatePath(templateName);
@@ -152,6 +161,14 @@ public class PoiDocTemplateUtils {
         ZipMultiFileUtils.zipFile(zipFileName, response, is, zipFileName);
     }
 
+    /**
+     * 多文件导出压缩包
+     * @param templateName
+     * @param models
+     * @param response
+     * @param zipFileName
+     * @throws IOException
+     */
     public static void generateZip(String templateName, List<Map<String, Object>> models, HttpServletResponse response, String zipFileName)
             throws IOException {
         List<InputStream> isList = new ArrayList<>();
