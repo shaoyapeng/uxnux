@@ -22,10 +22,18 @@ public class PoiDocTemplateUtils {
 
     private static String templatePath;
 
+    /**
+     * 设置模板路径
+     * @param templatePath 模板路径
+     */
     public static void setTemplatePath(String templatePath) {
         PoiDocTemplateUtils.templatePath = templatePath;
     }
 
+    /**
+     * 获取模板路径
+     * @return templatePath
+     */
     public static String getTemplatePath() {
        return PoiDocTemplateUtils.templatePath;
     }
@@ -108,6 +116,12 @@ public class PoiDocTemplateUtils {
         return template;
     }
 
+    /**
+     * 保存
+     * @param template 模板
+     * @param savePath 保存路径
+     * @throws IOException
+     */
     private static void save(XWPFTemplate template, String savePath) throws IOException {
         OutputStream os = new FileOutputStream(savePath);
         template.write(os);
