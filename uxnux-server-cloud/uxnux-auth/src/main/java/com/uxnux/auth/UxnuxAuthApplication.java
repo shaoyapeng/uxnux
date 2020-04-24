@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 
 @SpringBootApplication
-@EnableDiscoveryClient
-@EnableAuthorizationServer
+// @EnableDiscoveryClient
+// @EnableAuthorizationServer
 public class UxnuxAuthApplication {
 
     public static void main(String[] args) {

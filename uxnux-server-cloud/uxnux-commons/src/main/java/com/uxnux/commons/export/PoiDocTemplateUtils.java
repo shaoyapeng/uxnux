@@ -19,6 +19,10 @@ public class PoiDocTemplateUtils {
 
     private static final String DEFAULT_TEMPLATE_PATH = "templates/";
 
+    public static final String FILE_NAME_KYE = "FILE_NAME";
+
+    public static final String MODEL_KEY = "MODEL";
+
 
     private static String templatePath;
 
@@ -185,18 +189,61 @@ public class PoiDocTemplateUtils {
      */
     public static void generateZip(String templateName, List<Map<String, Object>> models, HttpServletResponse response, String zipFileName)
             throws IOException {
+        List<InputStream> isList = getInputStreamList(models, templateName, zipFileName);
+        List<String> fileNames = getFileNameList(models);
+        ZipMultiFileUtils.zipFiles(isList, response.getOutputStream(), fileNames, zipFileName);
+    }
+
+    /**
+     * 多文件导出压缩包 导出到本地路径下
+     * @param templateName
+     * @param models
+     * @param zipFileName
+     * @throws IOException
+     */
+    public static void generateZip(String templateName, List<Map<String, Object>> models, String exportPath, String zipFileName)
+            throws IOException {
+        List<InputStream> isList = getInputStreamList(models, templateName, zipFileName);
+        List<String> fileNames = getFileNameList(models);
+        OutputStream os = new FileOutputStream(exportPath + zipFileName);
+        ZipMultiFileUtils.zipFiles(isList, os, fileNames, zipFileName);
+    }
+
+    /**
+     * 获得所有文件流
+     * @param models
+     * @param templateName
+     * @param zipFileName
+     * @return
+     * @throws IOException
+     */
+    private static List<InputStream> getInputStreamList(List<Map<String, Object>> models, String templateName, String zipFileName)
+        throws IOException {
         List<InputStream> isList = new ArrayList<>();
-        List<String> fileNames = new ArrayList<>();
         for (Map map: models) {
-            Map model = (Map) map.get("model");
-            String fileName = (String) map.get("fileName");
+            Map model = (Map) map.get(MODEL_KEY);
             File file = getTemplatePath(templateName);
             XWPFTemplate template = createResultByTemplate(file, model);
             InputStream is = getInputStreamToTemplate(template, zipFileName);
             isList.add(is);
+        }
+        return isList;
+    }
+
+    /**
+     *  获得文件名称
+     * @param models
+     * @return
+     * @throws IOException
+     */
+    private static List<String> getFileNameList(List<Map<String, Object>> models)
+            throws IOException {
+        List<String> fileNames = new ArrayList<>();
+        for (Map map: models) {
+            String fileName = (String) map.get(FILE_NAME_KYE);
             fileNames.add(fileName);
         }
-        ZipMultiFileUtils.zipFiles(isList, response, fileNames, zipFileName);
-
+        return fileNames;
     }
+
 }

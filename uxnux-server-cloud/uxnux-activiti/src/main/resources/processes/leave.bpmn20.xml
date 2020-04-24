@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="leave-01" name="leave" isExecutable="true">
+    <documentation>请假流程</documentation>
+    <startEvent id="leave-01-001" name="请假申请"></startEvent>
+    <userTask id="leave-01-002" name="填写请假申请"></userTask>
+    <sequenceFlow id="sid-A853FD94-BDD3-48F4-AAED-31C2BC39B66D" sourceRef="leave-01-001" targetRef="leave-01-002"></sequenceFlow>
+    <exclusiveGateway id="leave-01-003" name="判断由谁审批"></exclusiveGateway>
+    <sequenceFlow id="sid-A8327B88-805A-41A5-B1D4-2FF91756F309" sourceRef="leave-01-002" targetRef="leave-01-003"></sequenceFlow>
+    <userTask id="leave-01-007" name="部门经理审批" activiti:assignee="assignee-leave" activiti:candidateUsers="leave-user2" activiti:candidateGroups="leave-group2">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="leave-01-006" name="项目经理审批" activiti:assignee="Assignee-leave" activiti:candidateUsers="leave-user1" activiti:candidateGroups="leave-group1">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="leave-01-004" name="小于三天" sourceRef="leave-01-003" targetRef="leave-01-006">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${type == 1}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="leave-01-005" name="大于三天" sourceRef="leave-01-003" targetRef="leave-01-007">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${type == 2}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="leava-01-010" name="人事审批" activiti:assignee="Assignee-leave3" activiti:candidateUsers="leave-user3" activiti:candidateGroups="leave-group3">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="leave-01-008" name="提交人事" sourceRef="leave-01-006" targetRef="leava-01-010"></sequenceFlow>
+    <sequenceFlow id="leave-01-009" name="提交人事" sourceRef="leave-01-007" targetRef="leava-01-010"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_leave-01">
+    <bpmndi:BPMNPlane bpmnElement="leave-01" id="BPMNPlane_leave-01">
+      <bpmndi:BPMNShape bpmnElement="leave-01-001" id="BPMNShape_leave-01-001">
+        <omgdc:Bounds height="30.0" width="30.0" x="90.0" y="150.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leave-01-002" id="BPMNShape_leave-01-002">
+        <omgdc:Bounds height="80.0" width="100.0" x="165.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leave-01-003" id="BPMNShape_leave-01-003">
+        <omgdc:Bounds height="40.0" width="40.0" x="310.0" y="145.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leave-01-007" id="BPMNShape_leave-01-007">
+        <omgdc:Bounds height="80.0" width="100.0" x="390.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leave-01-006" id="BPMNShape_leave-01-006">
+        <omgdc:Bounds height="80.0" width="100.0" x="390.0" y="60.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leava-01-010" id="BPMNShape_leava-01-010">
+        <omgdc:Bounds height="80.0" width="100.0" x="585.0" y="120.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-A8327B88-805A-41A5-B1D4-2FF91756F309" id="BPMNEdge_sid-A8327B88-805A-41A5-B1D4-2FF91756F309">
+        <omgdi:waypoint x="265.0" y="165.2164502164502"></omgdi:waypoint>
+        <omgdi:waypoint x="310.4130434782609" y="165.41304347826087"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="leave-01-004" id="BPMNEdge_leave-01-004">
+        <omgdi:waypoint x="330.5" y="145.5"></omgdi:waypoint>
+        <omgdi:waypoint x="330.5" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="100.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="leave-01-005" id="BPMNEdge_leave-01-005">
+        <omgdi:waypoint x="330.5" y="184.5"></omgdi:waypoint>
+        <omgdi:waypoint x="330.5" y="250.0"></omgdi:waypoint>
+        <omgdi:waypoint x="390.0" y="250.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="leave-01-008" id="BPMNEdge_leave-01-008">
+        <omgdi:waypoint x="490.0" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="537.5" y="100.0"></omgdi:waypoint>
+        <omgdi:waypoint x="537.5" y="160.0"></omgdi:waypoint>
+        <omgdi:waypoint x="585.0" y="160.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="leave-01-009" id="BPMNEdge_leave-01-009">
+        <omgdi:waypoint x="490.0" y="249.0721649484536"></omgdi:waypoint>
+        <omgdi:waypoint x="585.0" y="160.9278350515464"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-A853FD94-BDD3-48F4-AAED-31C2BC39B66D" id="BPMNEdge_sid-A853FD94-BDD3-48F4-AAED-31C2BC39B66D">
+        <omgdi:waypoint x="120.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="165.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

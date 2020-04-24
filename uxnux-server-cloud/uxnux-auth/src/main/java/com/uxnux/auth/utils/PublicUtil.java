@@ -1,7 +1,7 @@
 /*
  */
 
-package com.uxnux.auth.common.utils;
+package com.uxnux.auth.utils;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -10,9 +10,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * The class Public util.
  *
- * @author paascloud.net@gmail.com
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PublicUtil {

@@ -1,4 +1,4 @@
-# 配置服务中心
+# 服务中心客户端配置
 eureka:
   client:
     service-url:

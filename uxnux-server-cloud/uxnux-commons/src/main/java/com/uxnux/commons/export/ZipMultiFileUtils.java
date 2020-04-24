@@ -224,12 +224,11 @@ public class ZipMultiFileUtils {
     /**
      * 多文件下载
      * @param osList 文件流集合
-     * @param response 响应
+     * @param os 流
      * @param fileNames 需要打包的多文件名称集合
      * @param zipFileName 最后下载的zip文件名称xxx.zip
      */
-    public static void zipFiles(List<InputStream> osList, HttpServletResponse response, List<String> fileNames, String zipFileName) {
-        OutputStream os = responseToOutputStream(response, zipFileName);
+    public static void zipFiles(List<InputStream> osList, OutputStream os, List<String> fileNames, String zipFileName) {
         zipFiles(osList, os, fileNames);
     }
 

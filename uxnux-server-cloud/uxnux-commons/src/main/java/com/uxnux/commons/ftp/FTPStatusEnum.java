@@ -1,7 +1,5 @@
 package com.uxnux.commons.ftp;
 
-import lombok.Data;
-
 /**
  * @Author: 10785
  * @Date: 2019/12/5 14:30

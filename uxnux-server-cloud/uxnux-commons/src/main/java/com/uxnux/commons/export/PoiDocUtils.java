@@ -1,12 +1,14 @@
 package com.uxnux.commons.export;
 
-import lombok.Data;
 import org.apache.poi.xwpf.usermodel.*;
 import org.springframework.util.ResourceUtils;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 自己写的word导出类，使用的模板是${}，只能替换普通的文本
@@ -203,7 +205,6 @@ public class PoiDocUtils {
     /**
      * TagInfo 内部类，标签和值一一对应
      */
-    @Data
     class TagInfo {
         private String tagText;
         private String tagValue;
@@ -211,6 +212,57 @@ public class PoiDocUtils {
         protected TagInfo(String tagText, String tagValue) {
             this.tagText = tagText;
             this.tagValue = tagValue;
+        }
+
+        public String getTagText() {
+            return this.tagText;
+        }
+
+        public String getTagValue() {
+            return this.tagValue;
+        }
+
+        public void setTagText(String tagText) {
+            this.tagText = tagText;
+        }
+
+        public void setTagValue(String tagValue) {
+            this.tagValue = tagValue;
+        }
+
+        public boolean equals(final Object o) {
+            if (o == this) return true;
+            if (!(o instanceof TagInfo))
+                return false;
+            final TagInfo other = (TagInfo) o;
+            if (!other.canEqual((Object) this)) return false;
+            final Object this$tagText = this.getTagText();
+            final Object other$tagText = other.getTagText();
+            if (this$tagText == null ? other$tagText != null : !this$tagText.equals(other$tagText))
+                return false;
+            final Object this$tagValue = this.getTagValue();
+            final Object other$tagValue = other.getTagValue();
+            if (this$tagValue == null ? other$tagValue != null : !this$tagValue.equals(other$tagValue))
+                return false;
+            return true;
+        }
+
+        protected boolean canEqual(final Object other) {
+            return other instanceof TagInfo;
+        }
+
+        public int hashCode() {
+            final int PRIME = 59;
+            int result = 1;
+            final Object $tagText = this.getTagText();
+            result = result * PRIME + ($tagText == null ? 43 : $tagText.hashCode());
+            final Object $tagValue = this.getTagValue();
+            result = result * PRIME + ($tagValue == null ? 43 : $tagValue.hashCode());
+            return result;
+        }
+
+        public String toString() {
+            return "PoiDocUtils.TagInfo(tagText=" + this.getTagText() + ", tagValue=" + this.getTagValue() + ")";
         }
     }
     public static void main(String[] args) {

@@ -12,8 +12,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://127.0.0.1:3306/uxnux?useUnicode=true&characterEncoding=utf8&serverTimezone=CST
-    name: root
+    url: jdbc:mysql://127.0.0.1:3306/uxnux_auth?useUnicode=true&characterEncoding=utf8&serverTimezone=CST
+    username: root
     password: root
     hikari:
       pool-name: hikariCP-biz
@@ -24,3 +24,8 @@ spring:
       idle-timeout: 72000
       max-lifetime: 1800000
 
+crypto:
+  AES_KEY: 1234123412ABCDEF
+  IV: 1234123412ABCDEF
+  AES_TRANSFORMATION: AES/CBC/PKCS5Padding
+  AES_ALGORITHM: AES

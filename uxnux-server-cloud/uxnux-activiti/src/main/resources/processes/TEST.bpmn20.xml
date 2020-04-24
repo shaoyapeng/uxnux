@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="TEST-PROCESSS" name="TEST" isExecutable="true">
+    <documentation>测试用流程</documentation>
+    <startEvent id="TEST-START" name="开始"></startEvent>
+    <exclusiveGateway id="TEST-GATEWAY-001" name="网关"></exclusiveGateway>
+    <userTask id="TEST-TASK-002" name="一级审批" activiti:assignee="TEST-FIRST-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-FIRST-APPROVAL-USER-001-01,TEST-FIRST-APPROVAL-USER-001-02,TEST-FIRST-APPROVAL-USER-001-03" activiti:candidateGroups="TEST-FIRST-APPROVAL-GROUP-001-01,TEST-FIRST-APPROVAL-GROUP-001-02,TEST-FIRST-APPROVAL-GROUP-001-03">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-003" name="一级审批" activiti:assignee="TEST-FIRST-APPROVAL-ASSIGNEE-002" activiti:candidateUsers="TEST-FIRST-APPROVAL-USER-002-01,TEST-FIRST-APPROVAL-USER-002-02,TEST-FIRST-APPROVAL-USER-002-03" activiti:candidateGroups="TEST-FIRST-APPROVAL-GROUP-002-01,TEST-FIRST-APPROVAL-GROUP-002-02,TEST-FIRST-APPROVAL-GROUP-002-03">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-004" name="一级审批" activiti:assignee="TEST-FIRST-APPROVAL-ASSIGNEE-003" activiti:candidateUsers="TEST-FIRST-APPROVAL-USER-003-01" activiti:candidateGroups="TEST-FIRST-APPROVAL-GROUP-003-01,TEST-FIRST-APPROVAL-GROUP-003-02">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-001" name="申请"></userTask>
+    <sequenceFlow id="TEST-PATH-001" name="流程1" sourceRef="TEST-START" targetRef="TEST-TASK-001"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-002" name="流程2" sourceRef="TEST-TASK-001" targetRef="TEST-GATEWAY-001"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-003" name="PAHT &gt; 10" sourceRef="TEST-GATEWAY-001" targetRef="TEST-TASK-002">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${PATH>10}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="TEST-TASK-005" name="二级审批" activiti:assignee="TEST-SECOND-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-SECOND-APPROVAL-USER-001-01,TEST-SECOND-APPROVAL-USER-001-02,TEST-SECOND-APPROVAL-USER-001-03" activiti:candidateGroups="TEST-SECOND-APPROVAL-GROUP-001-01">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-006" name="二级流程" activiti:assignee="TEST-SECOND-APPROVAL-ASSIGNEE-002" activiti:candidateUsers="TEST-SECOND-APPROVAL-USER-002" activiti:candidateGroups="TEST-SECOND-APPROVAL-GROUP-002">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-007" name="二级流程" activiti:assignee="TEST-SECOND-APPROVAL-ASSIGNEE-003" activiti:candidateUsers="TEST-SECOND-APPROVAL-USER-003" activiti:candidateGroups="TEST-SECOND-APPROVAL-GROUP-003">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-008" name="三级流程" activiti:assignee="TEST-THIRD-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-THIRD-APPROVAL-USER-001" activiti:candidateGroups="TEST-THIRD-APPROVAL-GROUP-001">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="TEST-PATH-006" name="流程6" sourceRef="TEST-TASK-002" targetRef="TEST-TASK-005"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-007" name="流程7" sourceRef="TEST-TASK-003" targetRef="TEST-TASK-006"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-008" name="流程8" sourceRef="TEST-TASK-004" targetRef="TEST-TASK-007"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-009" name="流程9" sourceRef="TEST-TASK-005" targetRef="TEST-TASK-008"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-010" name="流程10" sourceRef="TEST-TASK-006" targetRef="TEST-TASK-008"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-011" name="流程11" sourceRef="TEST-TASK-007" targetRef="TEST-TASK-008"></sequenceFlow>
+    <parallelGateway id="TEST-GATEWAY-002" name="并行网关"></parallelGateway>
+    <userTask id="TEST-TASK-010" name="四级流程" activiti:assignee="TEST-FOURTH-APPROVAL-ASSIGNEE-002" activiti:candidateUsers="TEST-FOURTH-APPROVAL-USER-002-01,TEST-FOURTH-APPROVAL-USER-002-02" activiti:candidateGroups="TEST-FOURTH-APPROVAL-GROUP-002-01,TEST-FOURTH-APPROVAL-GROUP-002-02">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-009" name="四级流程" activiti:assignee="TEST-FOURTH-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-FOURTH-APPROVAL-USER-001-01" activiti:candidateGroups="TEST-FOURTH-APPROVAL-GROUP-001-01">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="TEST-PATH-012" name="流程12" sourceRef="TEST-TASK-008" targetRef="TEST-GATEWAY-002"></sequenceFlow>
+    <userTask id="TEST-TASK-011" name="五级流程" activiti:assignee="TEST-FIFTH-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-FIFTH-APPROVAL-USER-001-01,TEST-FIFTH-APPROVAL-USER-001-02" activiti:candidateGroups="TEST-FIFTH-APPROVAL-GROUP-001-01">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="TEST-TASK-012" name="六级流程" activiti:assignee="TEST-SIXTH-APPROVAL-ASSIGNEE-001" activiti:candidateUsers="TEST-SIXTH-APPROVAL-USER-001-01" activiti:candidateGroups="TEST-SIXTH-APPROVAL-GROUP-001-01">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[true]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <endEvent id="TEST-END" name="结束"></endEvent>
+    <sequenceFlow id="TEST-PATH-13" name="流程13" sourceRef="TEST-GATEWAY-002" targetRef="TEST-TASK-009"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-14" name="流程14" sourceRef="TEST-GATEWAY-002" targetRef="TEST-TASK-010"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-15" name="流程15" sourceRef="TEST-TASK-009" targetRef="TEST-TASK-011"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-16" name="流程16" sourceRef="TEST-TASK-010" targetRef="TEST-TASK-012"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-17" name="流程17" sourceRef="TEST-TASK-011" targetRef="TEST-TASK-012"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-18" name="流程18" sourceRef="TEST-TASK-012" targetRef="TEST-END"></sequenceFlow>
+    <sequenceFlow id="TEST-PATH-004" name="5 &lt; PATH &lt;= 10" sourceRef="TEST-GATEWAY-001" targetRef="TEST-TASK-003">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${PATH<=10&&PATH>5}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="TEST-PATH-005" name="PATH =&lt; 5" sourceRef="TEST-GATEWAY-001" targetRef="TEST-TASK-004">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${PATH<=5}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_TEST-PROCESSS">
+    <bpmndi:BPMNPlane bpmnElement="TEST-PROCESSS" id="BPMNPlane_TEST-PROCESSS">
+      <bpmndi:BPMNShape bpmnElement="TEST-START" id="BPMNShape_TEST-START">
+        <omgdc:Bounds height="30.0" width="30.0" x="45.0" y="240.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-GATEWAY-001" id="BPMNShape_TEST-GATEWAY-001">
+        <omgdc:Bounds height="40.0" width="40.0" x="255.0" y="235.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-002" id="BPMNShape_TEST-TASK-002">
+        <omgdc:Bounds height="80.0" width="100.0" x="410.0" y="115.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-003" id="BPMNShape_TEST-TASK-003">
+        <omgdc:Bounds height="80.0" width="100.0" x="410.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-004" id="BPMNShape_TEST-TASK-004">
+        <omgdc:Bounds height="80.0" width="100.0" x="410.0" y="325.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-001" id="BPMNShape_TEST-TASK-001">
+        <omgdc:Bounds height="80.0" width="100.0" x="120.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-005" id="BPMNShape_TEST-TASK-005">
+        <omgdc:Bounds height="80.0" width="100.0" x="555.0" y="115.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-006" id="BPMNShape_TEST-TASK-006">
+        <omgdc:Bounds height="80.0" width="100.0" x="555.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-007" id="BPMNShape_TEST-TASK-007">
+        <omgdc:Bounds height="80.0" width="100.0" x="555.0" y="325.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-008" id="BPMNShape_TEST-TASK-008">
+        <omgdc:Bounds height="80.0" width="100.0" x="740.0" y="215.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-GATEWAY-002" id="BPMNShape_TEST-GATEWAY-002">
+        <omgdc:Bounds height="40.0" width="40.0" x="885.0" y="235.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-010" id="BPMNShape_TEST-TASK-010">
+        <omgdc:Bounds height="80.0" width="100.0" x="960.0" y="300.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-009" id="BPMNShape_TEST-TASK-009">
+        <omgdc:Bounds height="80.0" width="100.0" x="960.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-011" id="BPMNShape_TEST-TASK-011">
+        <omgdc:Bounds height="80.0" width="100.0" x="1105.0" y="125.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-TASK-012" id="BPMNShape_TEST-TASK-012">
+        <omgdc:Bounds height="80.0" width="100.0" x="1250.0" y="300.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="TEST-END" id="BPMNShape_TEST-END">
+        <omgdc:Bounds height="28.0" width="28.0" x="1395.0" y="326.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-13" id="BPMNEdge_TEST-PATH-13">
+        <omgdi:waypoint x="905.5" y="235.5"></omgdi:waypoint>
+        <omgdi:waypoint x="905.5" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="960.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-009" id="BPMNEdge_TEST-PATH-009">
+        <omgdi:waypoint x="655.0" y="182.02702702702703"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="227.97297297297297"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-18" id="BPMNEdge_TEST-PATH-18">
+        <omgdi:waypoint x="1350.0" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1395.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-16" id="BPMNEdge_TEST-PATH-16">
+        <omgdi:waypoint x="1060.0" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1250.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-005" id="BPMNEdge_TEST-PATH-005">
+        <omgdi:waypoint x="283.404" y="266.596"></omgdi:waypoint>
+        <omgdi:waypoint x="353.5" y="365.0"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="365.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-006" id="BPMNEdge_TEST-PATH-006">
+        <omgdi:waypoint x="510.0" y="155.0"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="155.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-17" id="BPMNEdge_TEST-PATH-17">
+        <omgdi:waypoint x="1205.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1227.5" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1227.5" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1250.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-007" id="BPMNEdge_TEST-PATH-007">
+        <omgdi:waypoint x="510.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="255.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-14" id="BPMNEdge_TEST-PATH-14">
+        <omgdi:waypoint x="905.5" y="274.5"></omgdi:waypoint>
+        <omgdi:waypoint x="905.5" y="340.0"></omgdi:waypoint>
+        <omgdi:waypoint x="960.0" y="340.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-008" id="BPMNEdge_TEST-PATH-008">
+        <omgdi:waypoint x="510.0" y="365.0"></omgdi:waypoint>
+        <omgdi:waypoint x="555.0" y="365.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-15" id="BPMNEdge_TEST-PATH-15">
+        <omgdi:waypoint x="1060.0" y="165.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1105.0" y="165.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-001" id="BPMNEdge_TEST-PATH-001">
+        <omgdi:waypoint x="75.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="255.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-012" id="BPMNEdge_TEST-PATH-012">
+        <omgdi:waypoint x="840.0" y="255.2164502164502"></omgdi:waypoint>
+        <omgdi:waypoint x="885.4130434782609" y="255.41304347826087"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-002" id="BPMNEdge_TEST-PATH-002">
+        <omgdi:waypoint x="220.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="255.0" y="255.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-003" id="BPMNEdge_TEST-PATH-003">
+        <omgdi:waypoint x="284.36426592797784" y="244.36426592797784"></omgdi:waypoint>
+        <omgdi:waypoint x="355.5" y="155.0"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="155.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-004" id="BPMNEdge_TEST-PATH-004">
+        <omgdi:waypoint x="294.5516304347826" y="255.4483695652174"></omgdi:waypoint>
+        <omgdi:waypoint x="410.0" y="255.13550135501356"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-010" id="BPMNEdge_TEST-PATH-010">
+        <omgdi:waypoint x="655.0" y="255.0"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="255.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="TEST-PATH-011" id="BPMNEdge_TEST-PATH-011">
+        <omgdi:waypoint x="655.0" y="335.27027027027026"></omgdi:waypoint>
+        <omgdi:waypoint x="740.0" y="284.72972972972974"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
